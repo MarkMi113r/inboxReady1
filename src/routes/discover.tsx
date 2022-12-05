@@ -1,5 +1,6 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
+import { LinearProgress } from "@mui/material";
 import { iHit } from "../interfaces/iHit";
 import CollapsibleTable from "../components/collTable";
 import BarChart from "../components/barChart";
@@ -33,6 +34,10 @@ export function Discover() {
 
   if (data) return <> {theHits}</>;
   else {
-    return <>Loading...</>;
+    return (
+      <>
+        <LinearProgress />
+      </>
+    );
   }
 }
