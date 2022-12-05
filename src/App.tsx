@@ -4,7 +4,7 @@ import { Discover } from "./routes/discover";
 import GlobalctxProvider from "./contexts/AppContext";
 import "./App.css";
 import Layout from "./components/layout";
-//for commit
+//in
 function App() {
   return (
     <GlobalctxProvider>
