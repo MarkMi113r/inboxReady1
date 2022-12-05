@@ -68,22 +68,23 @@ export default function GlobalAppCtxProvider({
 
   //to pull data, i used axios, I set a range in a state hook here in te context that can get called from the
   //datepicking component or anywhere else...it then sets the range to elastic being a memoized hook with range as dependency
+  //for CORS Blocking issues, i used cors-anywhere on localhost:8080 ---it puts a request header for Origin Access that elastic was not.
+  //might be my setup...or my Chome.
+
+  //http://localhost:8080/http://localhost:9200/kibana_sample_data_logs/_searc
   const execGetData = React.useCallback(async () => {
     axios
-      .get(
-        "http://localhost:8080/http://localhost:9200/kibana_sample_data_logs/_search",
-        {
-          method: "POST",
-          timeout: 0,
-          headers: {
-            accept: "application/json",
-          },
-          params: {
-            source: JSON.stringify(queryDtTm),
-            source_content_type: "application/json",
-          },
-        }
-      )
+      .get("http://localhost:9200/kibana_sample_data_logs/_search", {
+        method: "POST",
+        timeout: 0,
+        headers: {
+          accept: "application/json",
+        },
+        params: {
+          source: JSON.stringify(queryDtTm),
+          source_content_type: "application/json",
+        },
+      })
       .then((response: any) => {
         setData(response.data.hits.hits);
       })
