@@ -71,7 +71,8 @@ export default function GlobalAppCtxProvider({
   //for CORS Blocking issues, i used cors-anywhere on localhost:8080 ---it puts a request header for Origin Access that elastic was not.
   //might be my setup...or my Chome.
 
-  //http://localhost:8080/http://localhost:9200/kibana_sample_data_logs/_searc
+  //use this url after running cors-anywhere (Rob--W) https://github.com/Rob--W/cors-anywhere.git  ...run npm start and should work arond CORS as long as our port 8080 is free
+  //http://localhost:8080/http://localhost:9200/kibana_sample_data_logs/_search
   const execGetData = React.useCallback(async () => {
     axios
       .get("http://localhost:9200/kibana_sample_data_logs/_search", {
